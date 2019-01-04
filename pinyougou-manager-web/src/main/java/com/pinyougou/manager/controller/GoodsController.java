@@ -2,6 +2,7 @@ package com.pinyougou.manager.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import com.pinyougou.page.service.ItemPageService;
 import com.pinyougou.pojo.TbItem;
 import com.pinyougou.search.service.ItemSearchService;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -121,7 +122,6 @@ public class GoodsController {
 	@Reference
 	private ItemSearchService itemSearchService;
 
-
 	@RequestMapping("/updateGoodsStatus")
 	public Result updateGoodsStatus(Long[] ids,String status){
 		try {
@@ -132,6 +132,14 @@ public class GoodsController {
 				List<TbItem> itemList = goodsService.findItemListByGoodsIdAndStatus(ids, status);
 				//导入到solr
 				itemSearchService.importList(itemList);
+				//生成商品详细页
+				for (Long goodsId : ids) {
+					itemPageService.genItemHtml(goodsId);
+				}
+
+
+
+
 			}
 
 			return new Result(true," 更改成功");
@@ -139,6 +147,14 @@ public class GoodsController {
 			e.printStackTrace();
 			return new Result(false," 更改失败");
 		}
+	}
+
+	@Reference
+	private ItemPageService itemPageService;
+
+	@RequestMapping("/genHtml")
+	public void genHtml(Long goodsId){
+		itemPageService.genItemHtml(goodsId);
 	}
 	
 }

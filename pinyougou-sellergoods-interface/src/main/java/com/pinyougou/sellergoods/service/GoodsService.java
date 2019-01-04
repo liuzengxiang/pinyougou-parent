@@ -61,7 +61,9 @@ public interface GoodsService {
 	 */
 	public PageResult findPage(TbGoods goods, int pageNum, int pageSize);
 
+	//修改商品状态
 	void updateGoodsStatus(Long[] ids, String status);
+
 
 	public List<TbItem> findItemListByGoodsIdAndStatus(Long[] goodsIds, String status);
 }
