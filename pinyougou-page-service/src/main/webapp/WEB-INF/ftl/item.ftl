@@ -156,7 +156,6 @@
                                         <span title="点击取消选择">&nbsp;</span>
                                     </a>
                                 </dd>
-
 							</#list>
                         </dl>
 					</#list>
@@ -164,7 +163,7 @@
 
 
 						</div>
-					
+
 						<div class="summary-wrap">
 							<div class="fl title">
 								<div class="control-group">
@@ -306,7 +305,7 @@
 										</div>
 									</div>
 								</li>
-							</ul>x
+							</ul>
 						</div>
 						<div id="profile" class="tab-pane">
 							<p>推荐品牌</p>
@@ -553,7 +552,7 @@
 		</div>
 	</div>
 	<!-- 底部栏位 -->
-	
+
 <!--页面底部  开始 -->
 <#include "foot.ftl">
 <!--页面底部  结束 -->
